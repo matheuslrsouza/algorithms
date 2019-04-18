@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<img id="foto" src="colors2.jpg" alt="">
+<canvas id="myCanvas" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<div>
+    Pixel distance: <input type="number" name="distance" min="1" id="distance" value="1">
+</div>
+
+<script src="WeightedQuickUnionFind.js" type="text/javascript"></script>
+<script src="SilimarColorsSegmentation.js" type="text/javascript"></script>
+
+<script>
+  var segmentation = new SilimarColorsSegmentation();
+  segmentation.init();
+
+  document.getElementById('distance').addEventListener('change', (e) => {
+    segmentation.init();
+  });
+
+  //click event on the original foto, to select a pixel
+  document.getElementById('foto').addEventListener('click', (e) => {
+    segmentation.markSimilarRegion(e.offsetX, e.offsetY);
+  });
+</script>
+
+</body>
+</html>
